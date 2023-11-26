@@ -1,85 +1,136 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <nav>
+      <RouterLink to="/">
+        <div class="logo">
+          <img alt="Vue logo" class="logo" src="@/assets/logo.svg"/>
+          <span>théo<br>renaux</span>
+        </div>
+      </RouterLink>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <button>
+        <div class="circles">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div> 
+      </button>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+      <div class="links">
+        <div class="col">
+          <RouterLink to="/">ui/ux design</RouterLink>
+          <RouterLink to="/about">graphisme</RouterLink>
+          <RouterLink to="/about">photographie</RouterLink>
+        </div>
+        <div class="col">
+          <RouterLink to="/about">mes projets</RouterLink>
+          <RouterLink to="/about">à propos</RouterLink>
+          <RouterLink to="/about">me contacter</RouterLink>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <RouterView />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<style lang="sass" scoped>
+  @import "@/assets/breakpoints.sass"
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+  header
+    padding: 1.5rem 2rem
+    background-color: rgba(12, 12, 12, 0.8)
+    backdrop-filter: blur(10px)
+    
+  nav
+    display: flex
+    flex-flow: row nowrap
+    justify-content: space-between
+    align-items: center
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+    a
+      text-transform: uppercase
+      color: white
+      text-decoration: none
+    
+    .logo
+      display: flex
+      flex-flow: row nowrap
+      justify-content: space-between
+      align-items: center
+      column-gap: 1rem
+      font-size: 1.25rem
+      @include breakpoint($s-screen)
+        > span
+          display: none
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+    button
+      width: 50px
+      height: 50px
+      background-color: #282828
+      border-radius: 22px
+      display: none
+      @include breakpoint($s-screen)
+        display: flex
+        justify-content: center
+        align-items: center
+      .circles
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: repeat(2, 1fr)
+        grid-gap: 8px
+      
+        span
+          width: 12px
+          height: 12px
+          border-radius: 10px
+          background-color: white
+          transition: all 0.3s ease
+          animation: 0.1s both
+          animation-iteration-count: 1
+          
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+          &:nth-child(4n + 2)
+            animation-delay: 0.05s
+          &:nth-child(4n + 3)
+            animation-delay: 0.1s
+            background-color: #7e7e7e
+          &:nth-child(4n + 4)
+            animation-delay: 0.15s
+        
+        @keyframes circles_btn
+          0%
+            transform: scale(1)
+          90%
+            transform: scale(1.6)
+          100%
+            transform: scale(1.2)
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+      &:hover
+        span
+          animation-name: circles_btn
+          
+    .links
+      display: flex
+      flex-flow: row nowrap
+      justify-content: space-between
+      align-items: flex-start
+      column-gap: 5rem
+      @include breakpoint($s-screen)
+          display: none
 
-nav a:first-of-type {
-  border: 0;
-}
+      .col
+        display: flex
+        flex-flow: column nowrap
+        justify-content: flex-start
+        align-items: flex-start
+        row-gap: 0.5rem
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>

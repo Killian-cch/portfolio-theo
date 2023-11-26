@@ -1,0 +1,7 @@
+$s-screen: 768px
+$m-screen: 991px
+$l-screen: 1199px
+
+@mixin breakpoint($breakpoint)
+  @media only screen and (max-width: $breakpoint)
+    @content
