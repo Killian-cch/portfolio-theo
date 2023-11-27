@@ -76,6 +76,7 @@ import { RouterLink, RouterView } from 'vue-router'
       background-color: #282828
       border-radius: 22px
       display: none
+      transition: all 0.3s ease
       @include breakpoint($s-screen)
         display: flex
         justify-content: center
@@ -92,9 +93,31 @@ import { RouterLink, RouterView } from 'vue-router'
           border-radius: 10px
           background-color: white
           transition: all 0.3s ease
-          animation: 0.1s both
+          animation: 0.1s forwards
           animation-iteration-count: 1
-          
+          animation-name: circles_btn_out
+
+          &:nth-child(4n + 3)
+            background-color: #7e7e7e
+
+        @keyframes circles_btn
+          0%
+            transform: scale(1)
+          90%
+            transform: scale(1.6)
+          100%
+            transform: scale(1.3)
+
+        @keyframes circles_btn_out
+          0%
+            transform: scale(1.3)
+          100%
+            transform: scale(1)
+
+      &:hover
+        background-color: #3e3e3e
+        span
+          animation-name: circles_btn
 
           &:nth-child(4n + 2)
             animation-delay: 0.05s
@@ -103,18 +126,6 @@ import { RouterLink, RouterView } from 'vue-router'
             background-color: #7e7e7e
           &:nth-child(4n + 4)
             animation-delay: 0.15s
-        
-        @keyframes circles_btn
-          0%
-            transform: scale(1)
-          90%
-            transform: scale(1.6)
-          100%
-            transform: scale(1.2)
-
-      &:hover
-        span
-          animation-name: circles_btn
           
     .links
       display: flex
