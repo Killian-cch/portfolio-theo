@@ -39,20 +39,20 @@ let show_menu = ref(false)
       </div>
     </nav>
   </header>
-  <Transition name="fade" appear :css="false">
+  <Transition name="fade">
     <div v-if="show_menu" class="fs_links">
       <hr>
-      <RouterLink to="/">ui/ux design</RouterLink>
+      <RouterLink @click="show_menu = !show_menu" to="/">ui/ux design</RouterLink>
       <hr>
-      <RouterLink to="/about">graphisme</RouterLink>
+      <RouterLink @click="show_menu = !show_menu" to="/about">graphisme</RouterLink>
       <hr>
-      <RouterLink to="/about">photographie</RouterLink>
+      <RouterLink @click="show_menu = !show_menu" to="/about">photographie</RouterLink>
       <hr>
-      <RouterLink to="/about">mes projets</RouterLink>
+      <RouterLink @click="show_menu = !show_menu" to="/about">mes projets</RouterLink>
       <hr>
-      <RouterLink to="/about">à propos</RouterLink>
+      <RouterLink @click="show_menu = !show_menu" to="/about">à propos</RouterLink>
       <hr>
-      <RouterLink to="/about">me contacter</RouterLink>
+      <RouterLink @click="show_menu = !show_menu" to="/about">me contacter</RouterLink>
       <hr>
     </div>
   </Transition>
@@ -61,14 +61,6 @@ let show_menu = ref(false)
 
 <style lang="sass" scoped>
   @import "@/assets/breakpoints.sass"
-
-  .fade-transition
-    .fade-enter-active, .fade-leave-active
-      transition: opacity 0.5s
-    .fade-enter-to, .fade-leave-to
-      opacity: 1
-    .fade-enter, .fade-leave-to
-      opacity: 0
 
   header
     padding: 1.5rem 2rem
@@ -171,6 +163,7 @@ let show_menu = ref(false)
         row-gap: 0.5rem
 
   .fs_links
+    display: none
     @include breakpoint($s-screen)
       position: absolute
       top: 100px
@@ -203,4 +196,9 @@ let show_menu = ref(false)
           margin-top: 2rem
         &:last-child
           margin-bottom: 2rem
+
+  .fade-enter-active, .fade-leave-active
+    transition: opacity 0.3s ease
+  .fade-enter-from, .fade-leave-to
+    opacity: 0
 </style>
