@@ -1,5 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+
+let show_menu = ref(false)
 // import HelloWorld from './components/HelloWorld.vue'
 </script>
 
@@ -13,7 +16,7 @@ import { RouterLink, RouterView } from 'vue-router'
         </div>
       </RouterLink>
 
-      <button>
+      <button @click="show_menu = !show_menu">
         <div class="circles">
           <span></span>
           <span></span>
@@ -36,12 +39,36 @@ import { RouterLink, RouterView } from 'vue-router'
       </div>
     </nav>
   </header>
-
+  <Transition name="fade" appear :css="false">
+    <div v-if="show_menu" class="fs_links">
+      <hr>
+      <RouterLink to="/">ui/ux design</RouterLink>
+      <hr>
+      <RouterLink to="/about">graphisme</RouterLink>
+      <hr>
+      <RouterLink to="/about">photographie</RouterLink>
+      <hr>
+      <RouterLink to="/about">mes projets</RouterLink>
+      <hr>
+      <RouterLink to="/about">à propos</RouterLink>
+      <hr>
+      <RouterLink to="/about">me contacter</RouterLink>
+      <hr>
+    </div>
+  </Transition>
   <RouterView />
 </template>
 
 <style lang="sass" scoped>
   @import "@/assets/breakpoints.sass"
+
+  .fade-transition
+    .fade-enter-active, .fade-leave-active
+      transition: opacity 0.5s
+    .fade-enter-to, .fade-leave-to
+      opacity: 1
+    .fade-enter, .fade-leave-to
+      opacity: 0
 
   header
     padding: 1.5rem 2rem
@@ -143,5 +170,37 @@ import { RouterLink, RouterView } from 'vue-router'
         align-items: flex-start
         row-gap: 0.5rem
 
+  .fs_links
+    @include breakpoint($s-screen)
+      position: absolute
+      top: 100px
+      left: 0
+      display: flex
+      flex-flow: column nowrap
+      justify-content: space-between
+      align-items: center
+      row-gap: 1.5rem
+      width: 100%
+      height: calc( 100vh - 100px )
+      overflow-y: scroll
+      background-color: rgba(16, 16, 16, 0.5)
+      backdrop-filter: blur(20px)
 
+      a
+        position: relative
+        color: white
+        text-decoration: none
+        text-transform: uppercase
+
+      hr
+        margin: 0
+        width: calc( 100vw - 100px )
+        min-height: 1px
+        background-color: #313131
+        border: none
+
+        &:first-child
+          margin-top: 2rem
+        &:last-child
+          margin-bottom: 2rem
 </style>
