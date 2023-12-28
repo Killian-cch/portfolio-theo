@@ -56,17 +56,26 @@ let show_menu = ref(false)
       <hr>
     </div>
   </Transition>
-  <RouterView />
+
+  <Transition name="fade">
+    <RouterView />
+  </Transition>
 </template>
 
 <style lang="sass" scoped>
   @import "@/assets/breakpoints.sass"
 
+  .fade-enter-active, .fade-leave-active
+    transition: opacity 0.3s ease
+  .fade-enter-from, .fade-leave-to
+    opacity: 0
+
   header
     padding: 1.5rem 2rem
-    background-color: rgba(12, 12, 12, 0.8)
     backdrop-filter: blur(10px)
-    
+    @include breakpoint($s-screen)
+      background-color: rgba(12, 12, 12, 0.8)
+      
   nav
     display: flex
     flex-flow: row nowrap
@@ -196,9 +205,4 @@ let show_menu = ref(false)
           margin-top: 2rem
         &:last-child
           margin-bottom: 2rem
-
-  .fade-enter-active, .fade-leave-active
-    transition: opacity 0.3s ease
-  .fade-enter-from, .fade-leave-to
-    opacity: 0
 </style>
