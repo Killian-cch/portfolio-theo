@@ -1,9 +1,15 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import IconClose from '@/components/icons/IconClose.vue'
 import { ref } from 'vue'
 
 let show_menu = ref(false)
-// import HelloWorld from './components/HelloWorld.vue'
+function onOpenMenu(el, done) {
+  document.body.classList.add('menu-displayed')
+}
+function onCloseMenu(el, done) {
+  document.body.classList.remove('menu-displayed')
+}
 </script>
 
 <template>
@@ -39,23 +45,31 @@ let show_menu = ref(false)
       </div>
     </nav>
   </header>
-  <Transition name="fade">
-    <div v-if="show_menu" class="fs_links">
-      <hr>
-      <RouterLink @click="show_menu = !show_menu" to="/">ui/ux design</RouterLink>
-      <hr>
-      <RouterLink @click="show_menu = !show_menu" to="/about">graphisme</RouterLink>
-      <hr>
-      <RouterLink @click="show_menu = !show_menu" to="/about">photographie</RouterLink>
-      <hr>
-      <RouterLink @click="show_menu = !show_menu" to="/about">mes projets</RouterLink>
-      <hr>
-      <RouterLink @click="show_menu = !show_menu" to="/about">à propos</RouterLink>
-      <hr>
-      <RouterLink @click="show_menu = !show_menu" to="/about">me contacter</RouterLink>
-      <hr>
-    </div>
+
+  <Transition name="fade" @before-enter="onOpenMenu" @after-leave="onCloseMenu" appear>
+    <button v-if="show_menu" id="close-menu" @click="show_menu = !show_menu" @keyup.esc="console.log('test')">
+      <IconClose />
+    </button>
   </Transition>
+  <Transition name="fade" @before-enter="onOpenMenu" @after-leave="onCloseMenu" appear>
+      <div v-if="show_menu" class="fs_links">
+        
+        <RouterLink @click="show_menu = !show_menu" to="/"><img alt="Théo Renaux" class="menu-logo" src="@/assets/logo.svg"/></RouterLink>
+        <hr>
+        <RouterLink @click="show_menu = !show_menu" to="/">ui/ux design</RouterLink>
+        <hr>
+        <RouterLink @click="show_menu = !show_menu" to="/about">graphisme</RouterLink>
+        <hr>
+        <RouterLink @click="show_menu = !show_menu" to="/about">photographie</RouterLink>
+        <hr>
+        <RouterLink @click="show_menu = !show_menu" to="/about">mes projets</RouterLink>
+        <hr>
+        <RouterLink @click="show_menu = !show_menu" to="/about">à propos</RouterLink>
+        <hr>
+        <RouterLink @click="show_menu = !show_menu" to="/about">me contacter</RouterLink>
+        <hr>
+      </div>
+    </Transition>
 
   <Transition name="fade">
     <RouterView />
@@ -75,7 +89,7 @@ let show_menu = ref(false)
     backdrop-filter: blur(10px)
     @include breakpoint($s-screen)
       background-color: rgba(12, 12, 12, 0.8)
-      
+
   nav
     display: flex
     flex-flow: row nowrap
@@ -171,22 +185,37 @@ let show_menu = ref(false)
         align-items: flex-start
         row-gap: 0.5rem
 
+  #close-menu
+    position: fixed
+    left: calc( 100vw - 25px )
+    top: 25px
+    transform: translate(-50%, -50%)
+    background: none
+    color: white
+    cursor: pointer
+    z-index: 999
+
   .fs_links
     display: none
     @include breakpoint($s-screen)
-      position: absolute
-      top: 100px
-      left: 0
+      position: fixed
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
       display: flex
       flex-flow: column nowrap
       justify-content: space-between
       align-items: center
       row-gap: 1.5rem
       width: 100%
-      height: calc( 100vh - 100px )
+      height: 100%
       overflow-y: scroll
       background-color: rgba(16, 16, 16, 0.5)
       backdrop-filter: blur(20px)
+
+      .menu-logo
+        padding-top: 1.5rem
+        width: 40px
 
       a
         position: relative
