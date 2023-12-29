@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import IconClose from '@/components/icons/IconClose.vue'
 import { ref } from 'vue'
 
 let show_menu = ref(false)
@@ -17,7 +16,7 @@ function onCloseMenu(el, done) {
     <nav>
       <RouterLink to="/">
         <div class="logo">
-          <img alt="Vue logo" class="logo" src="@/assets/logo.svg"/>
+          <img alt="Vue logo" class="logo" src="@/assets/images/logo.svg"/>
           <span>théo<br>renaux</span>
         </div>
       </RouterLink>
@@ -63,15 +62,13 @@ function onCloseMenu(el, done) {
     </Transition>
   </header>
 
-  
-
   <Transition name="fade">
     <RouterView />
   </Transition>
 </template>
 
 <style lang="sass" scoped>
-  @import "@/assets/breakpoints.sass"
+  @import "@/assets/styles/breakpoints.sass"
 
   .fade-enter-active, .fade-leave-active
     transition: opacity 0.3s ease
@@ -155,7 +152,7 @@ function onCloseMenu(el, done) {
           100%
             transform: scale(1)
 
-      &:hover
+      &:hover, &:active //TODO
         background-color: #3e3e3e
         span
           animation-name: circles_btn
@@ -184,16 +181,6 @@ function onCloseMenu(el, done) {
         align-items: flex-start
         row-gap: 0.5rem
 
-  #close-menu
-    position: fixed
-    left: calc( 100vw - 25px )
-    top: 25px
-    transform: translate(-50%, -50%)
-    background: none
-    color: white
-    cursor: pointer
-    z-index: 999
-
   .fs_links
     display: none
     @include breakpoint($s-screen)
@@ -210,10 +197,6 @@ function onCloseMenu(el, done) {
       overflow-y: scroll
       background-color: rgba(16, 16, 16, 0.5)
       backdrop-filter: blur(20px)
-
-      .menu-logo
-        padding-top: 1.5rem
-        width: 40px
 
       a
         position: relative

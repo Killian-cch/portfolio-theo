@@ -12,14 +12,15 @@
 </template>
 
 <style lang="sass" scoped>
-	@import "@/assets/breakpoints.sass"
+	@import "@/assets/styles/breakpoints.sass"
 
 	.hero
 		display: flex
 		flex-flow: row nowrap
 		border-top: solid 1px #313131
 		border-bottom: solid 1px #313131
-		height: calc( 100vh - 103px )
+		height: calc( 100vh - 138px )
+		margin-bottom: 4rem
 		@include breakpoint($m-screen)
 			border: none
 		@include breakpoint($s-screen)
@@ -43,7 +44,7 @@
 			display: inline
 			text-align: left
 			font-size: 5vw
-			font-weight: 100
+			font-weight: 200
 			text-transform: capitalize
 			@include breakpoint($m-screen)
 				font-size: 6vw
