@@ -44,17 +44,8 @@ function onCloseMenu(el, done) {
         </div>
       </div>
     </nav>
-  </header>
-
-  <Transition name="fade" @before-enter="onOpenMenu" @after-leave="onCloseMenu" appear>
-    <button v-if="show_menu" id="close-menu" @click="show_menu = !show_menu" @keyup.esc="console.log('test')">
-      <IconClose />
-    </button>
-  </Transition>
-  <Transition name="fade" @before-enter="onOpenMenu" @after-leave="onCloseMenu" appear>
+    <Transition name="fade" @before-enter="onOpenMenu" @after-leave="onCloseMenu" appear>
       <div v-if="show_menu" class="fs_links">
-        
-        <RouterLink @click="show_menu = !show_menu" to="/"><img alt="Théo Renaux" class="menu-logo" src="@/assets/logo.svg"/></RouterLink>
         <hr>
         <RouterLink @click="show_menu = !show_menu" to="/">ui/ux design</RouterLink>
         <hr>
@@ -70,6 +61,9 @@ function onCloseMenu(el, done) {
         <hr>
       </div>
     </Transition>
+  </header>
+
+  
 
   <Transition name="fade">
     <RouterView />
@@ -85,9 +79,13 @@ function onCloseMenu(el, done) {
     opacity: 0
 
   header
-    padding: 1.5rem 2rem
+    width: calc( 100vw - 9rem )
+    padding: 2rem 4.5rem
     backdrop-filter: blur(10px)
     @include breakpoint($s-screen)
+      padding: 15px
+      width: calc( 100vw - 30px )
+      position: fixed
       background-color: rgba(12, 12, 12, 0.8)
 
   nav
@@ -109,14 +107,15 @@ function onCloseMenu(el, done) {
       column-gap: 1rem
       font-size: 1.25rem
       @include breakpoint($s-screen)
+        width: 40px
         > span
           display: none
 
     button
-      width: 50px
-      height: 50px
+      width: 40px
+      height: 40px
       background-color: #282828
-      border-radius: 22px
+      border-radius: 17px
       display: none
       transition: all 0.3s ease
       @include breakpoint($s-screen)
@@ -127,11 +126,11 @@ function onCloseMenu(el, done) {
         display: grid
         grid-template-columns: repeat(2, 1fr)
         grid-template-rows: repeat(2, 1fr)
-        grid-gap: 8px
+        grid-gap: 6px
       
         span
-          width: 12px
-          height: 12px
+          width: 10px
+          height: 10px
           border-radius: 10px
           background-color: white
           transition: all 0.3s ease
@@ -198,17 +197,16 @@ function onCloseMenu(el, done) {
   .fs_links
     display: none
     @include breakpoint($s-screen)
-      position: fixed
-      top: 50%
-      left: 50%
-      transform: translate(-50%, -50%)
+      position: absolute
+      top: 70px
+      left: 0
       display: flex
       flex-flow: column nowrap
       justify-content: space-between
       align-items: center
       row-gap: 1.5rem
       width: 100%
-      height: 100%
+      height: calc( 100vh - 70px )
       overflow-y: scroll
       background-color: rgba(16, 16, 16, 0.5)
       backdrop-filter: blur(20px)

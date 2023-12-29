@@ -19,11 +19,12 @@
 		flex-flow: row nowrap
 		border-top: solid 1px #313131
 		border-bottom: solid 1px #313131
-		height: calc( 100vh - 123px )
+		height: calc( 100vh - 103px )
 		@include breakpoint($m-screen)
 			border: none
 		@include breakpoint($s-screen)
-			height: calc( 100vh - 100px )
+			padding-top: 70px
+			height: calc( 100vh - 70px )
 
 		> div:first-child
 			flex-grow: 3
