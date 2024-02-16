@@ -18,7 +18,9 @@
 <style lang="sass" scoped>
   @import "@/assets/styles/breakpoints.sass"
   .content
-    margin: 0 2rem
+    display: flex
+    margin: 0 auto
+    padding: 0 4rem
 
   .about
     display: flex
@@ -28,6 +30,7 @@
     column-gap: 2rem
 
     p
+      font-size: 1.5rem
       font-weight: 200
       width: 50%
       text-transform: uppercase
@@ -40,16 +43,16 @@
       column-gap: 1rem
       font-family: Stylish Delight
       white-space: nowrap
-      font-size: 1.5rem
+      font-size: 3rem
 
       > div span
         text-transform: uppercase
-        font-size: 2rem
+        font-size: 3.2rem
 
       > span
         aspect-ratio: 1 / 1
-        width: 50px
-        height: 50px
-        border-radius: 50px
+        width: 4.5rem
+        height: 4.5rem
+        border-radius: 100%
         background-color: white
 </style>

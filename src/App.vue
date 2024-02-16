@@ -76,13 +76,16 @@ function onCloseMenu(el, done) {
     opacity: 0
 
   header
-    width: calc( 100vw - 9rem )
+    position: fixed
+    max-width: 1920px
+    width: 100%
     padding: 2rem 4.5rem
     backdrop-filter: blur(10px)
+    background-color: #101010CC
+    border-radius: 0 0 10px 10px
+    z-index: 99
     @include breakpoint($s-screen)
       padding: 15px
-      width: calc( 100vw - 30px )
-      position: fixed
       background-color: rgba(12, 12, 12, 0.8)
 
   nav
@@ -183,6 +186,7 @@ function onCloseMenu(el, done) {
 
   .fs_links
     display: none
+    z-index: 15
     @include breakpoint($s-screen)
       position: absolute
       top: 70px

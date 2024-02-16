@@ -1,3 +1,5 @@
+@import "@/assets/styles/breakpoints.sass"
+
 @font-face
   font-family: 'Inter'
   src: url('@/assets/fonts/inter/inter-variable.ttf') format('truetype')
@@ -10,7 +12,7 @@
   font-weight: normal
   font-style: normal
 
-html, body
+html, body, #app
   margin: 0
   padding: 0
   min-height: 100vh
@@ -19,11 +21,19 @@ html, body
   background-color: #101010
   position: relative
 
-body
+body, #app
   overflow-x: hidden
 
 body.menu-displayed
-  overflow: hidden
+  @include breakpoint($s-screen)
+    overflow: hidden
+
+*
+  box-sizing: border-box
+
+#app
+  margin: auto
+  max-width: 1920px
 
 button
   border: none
