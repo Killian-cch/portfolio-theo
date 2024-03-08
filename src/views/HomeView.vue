@@ -83,6 +83,8 @@
         padding: 0
         margin: 0
         li
+          position: relative
+          transition: all 0.3s ease
           a
             margin: 0 1rem
             display: flex
@@ -94,5 +96,32 @@
             text-decoration: none
             color: white
             font-size: 2.25rem
+          &::before
+            z-index: 1
+            content: ''
+            position: absolute
+            top: 0
+            left: 50%
+            transform: translateX(-50%)
+            width: 100vw
+            height: 100%
+          &:hover
+            a *
+              color: #1D1D1D
+              z-index: 2
+            &::before
+              z-index: 1
+              content: ''
+              position: absolute
+              top: 0
+              left: 50%
+              transform: translateX(-50%)
+              width: 100vw
+              height: 100%
+              background-color: white
+
+
+         
+            
 
 </style>
