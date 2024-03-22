@@ -19,29 +19,35 @@
 
 	.hero
 		position: relative
+		padding-top: 8.75rem
 		margin-bottom: 4rem
-		height: 100vh //8.6rem
+		height: 100vh //8.75rem
 		border-bottom: solid 1px #313131
-		border-top: solid 1px #313131
-		@include breakpoint($m-screen)
-			border: none
-			height: calc(100vh - 140px)
-			margin-bottom: 0
 		@include breakpoint($s-screen)
 			padding-top: 70px
-			height: calc(100vh - 70px)
-			margin-top: 70px
+			margin-bottom: 0
+			border: none
+		&::before
+			content: ''
+			display: block
+			height: auto
+			width: 100%
+			border-top: solid 1px #313131
 		.title
 			position: absolute
 			right: 0
 			border-left: solid 1px #565656
 			display: flex
 			flex-flow: column nowrap
-			justify-content: flex-end
-			align-items: flex-end
-			width: 70%
-			height: 100%
+			justify-content: center
+			align-items: center
+			width: 80%
+			height: calc(100% - 8.75rem - 1px)
 			padding: 0 10%
+			@include breakpoint($s-screen)
+				height: calc(100% - 71px)
+				width: 100%
+				border: none
 
 			.name
 				display: inline
@@ -67,10 +73,10 @@
 					font-size: 9vw
 				@include breakpoint($s-screen)
 					font-size: 10vw
-		// .scroll
-			position: absolute
-			right: 0
-			bottom: 0
-			transform: translate(-50%, -50%)
-			width: 330px
+		// // .scroll
+		// 	position: absolute
+		// 	right: 0
+		// 	bottom: 0
+		// 	transform: translate(-50%, -50%)
+		// 	width: 330px
 </style>
