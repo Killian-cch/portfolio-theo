@@ -19,6 +19,7 @@
       <div>Sommaire</div>
     </div>
     <ul>
+      <div class="separator"></div>
       <li>
         <a href="#">
           <div class="big-wrap">
@@ -30,6 +31,7 @@
           </div>
         </a>
       </li>
+      <div class="separator"></div>
       <li>
         <a href="#">
           <div class="big-wrap">
@@ -41,6 +43,7 @@
           </div>
         </a>
       </li>
+      <div class="separator"></div>
       <li>
         <a href="#">
           <div class="big-wrap">
@@ -52,6 +55,7 @@
           </div>
         </a>
       </li>
+      <div class="separator"></div>
       <li>
         <a href="#">
           <div class="big-wrap">
@@ -63,6 +67,7 @@
           </div>
         </a>
       </li>
+      <div class="separator"></div>
       <li>
         <a href="#">
           <div class="big-wrap">
@@ -74,6 +79,7 @@
           </div>
         </a>
       </li>
+      <div class="separator"></div>
       <li>
         <a href="#">
           <div class="big-wrap">
@@ -85,6 +91,7 @@
           </div>
         </a>
       </li>
+      <div class="separator"></div>
       <li>
         <a href="#">
           <div class="big-wrap">
@@ -96,6 +103,7 @@
           </div>
         </a>
       </li>
+      <div class="separator"></div>
     </ul>
   </div>
 </template>
@@ -161,6 +169,11 @@
       margin: 0
       li
         transition: all 0.3s ease
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: space-between
+        min-height: 124px
         a
           display: block
           font-family: Stylish Delight
@@ -169,13 +182,16 @@
           text-decoration: none
           color: white
           font-size: 2.25rem
-          border-top: solid 1px #313131
+          width: 100%
+          @include breakpoint($s-screen)
+            margin: 0
           .big-wrap
             display: flex
             flex-flow: row nowrap
             justify-content: space-between
             align-items: center
             padding: 0 4rem
+            width: 100%
             .wrap
               display: flex
               flex-flow: row nowrap
@@ -186,32 +202,28 @@
               .hover-star
                 width: 60px
                 opacity: 0
+                @include breakpoint($m-screen)
+                  display: none
             .arrow-tr
               transition: all 0.3s ease
               width: 33px
+              @include breakpoint($m-screen)
+                  margin-left: 2rem
         &:hover
           background-color: white
-          a
-            border-top: solid 1px rgba(0, 0, 0, 0)
-            *
-              color: #1D1D1D
-            .big-wrap
-              .wrap
-                .hover-star
-                  opacity: 1
-              .arrow-tr
-                filter: invert(100%)
-                width: 44px
-      
-        &:last-child
-          a
-            border-bottom: solid 1px #313131
-          &:hover
-            a
-              border-bottom: solid 1px rgba(0, 0, 0, 0)
-
-
-         
-            
-
+          a *
+            color: #1D1D1D
+          .big-wrap
+            .wrap
+              .hover-star
+                opacity: 1
+            .arrow-tr
+              filter: invert(100%)
+              width: 44px  
+      .separator
+        width: 90%
+        height: 1px
+        margin-right: auto
+        margin-left: auto
+        background-color: #313131
 </style>
