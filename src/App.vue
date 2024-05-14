@@ -187,14 +187,6 @@ function onCloseMenu(el, done) {
   .fs_links
     display: none
     z-index: 15
-    &::before
-      content: ''
-      backdrop-filter: blur(50px)
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
     @include breakpoint($s-screen)
       position: absolute
       top: 70px

@@ -126,6 +126,8 @@
         font-weight: 200
         max-width: 700px
         text-transform: uppercase
+        @include breakpoint($s-screen)
+          font-size: 0.875rem
 
       .decor
         display: flex
@@ -136,13 +138,17 @@
         font-family: Stylish Delight
         white-space: nowrap
         font-size: 2rem
+        @include breakpoint($s-screen)
+          font-size: 1.25rem
 
         > span
-          aspect-ratio: 1 / 1
-          width: 4.5rem
-          height: 4.5rem
+          width: 50px
+          height: 50px
           border-radius: 100%
           background-color: white
+          @include breakpoint($s-screen)
+            width: 30px
+            height: 30px
     
   .table-contents
     margin-top: 7rem
@@ -155,13 +161,17 @@
       margin-bottom: 3rem
       
       .bullet-point
-        height: 4.5rem
+        height: 76px
+        @include breakpoint($s-screen)
+          height: 37px
 
       > div
         display: flex
         font-family: Stylish Delight
         white-space: nowrap
         font-size: 2rem
+        @include breakpoint($s-screen)
+          font-size: 1.25rem
     
     ul
       list-style: none
@@ -198,12 +208,15 @@
               justify-content: space-between
               align-items: center
               column-gap: 2rem
-
+              width: 100%
               .hover-star
                 width: 60px
                 opacity: 0
                 @include breakpoint($m-screen)
                   display: none
+              span
+                width: calc(100% - 33px - 2rem)
+                overflow: hidden
             .arrow-tr
               transition: all 0.3s ease
               width: 33px
