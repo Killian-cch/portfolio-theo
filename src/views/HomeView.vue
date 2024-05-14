@@ -113,6 +113,8 @@
   .content
     margin: 0 auto
     padding: 0 4rem
+    @include breakpoint($s-screen)
+      padding: 0 2rem
 
     .about
       display: flex
@@ -159,6 +161,8 @@
       align-items: center
       column-gap: 1rem
       margin-bottom: 3rem
+      @include breakpoint($s-screen)
+        padding: 0 2rem
       
       .bullet-point
         height: 76px
@@ -195,6 +199,7 @@
           width: 100%
           @include breakpoint($s-screen)
             margin: 0
+            font-size: 1.5rem
           .big-wrap
             display: flex
             flex-flow: row nowrap
@@ -202,6 +207,8 @@
             align-items: center
             padding: 0 4rem
             width: 100%
+            @include breakpoint($s-screen)
+              padding: 0 4rem
             .wrap
               display: flex
               flex-flow: row nowrap
@@ -239,4 +246,6 @@
         margin-right: auto
         margin-left: auto
         background-color: #313131
+        @include breakpoint($s-screen)
+          width: 100%
 </style>
