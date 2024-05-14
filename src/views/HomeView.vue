@@ -223,7 +223,8 @@
                   display: none
               span
                 width: calc(100% - 33px - 2rem)
-                overflow: hidden
+                @include breakpoint($m-screen)
+                  width: auto
             .arrow-tr
               transition: all 0.3s ease
               width: 33px
