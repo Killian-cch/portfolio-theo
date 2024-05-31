@@ -9,7 +9,6 @@ import '@/assets/styles/main.sass'
 const app = createApp(App)
 
 app.use(router)
-
 app.use(Vue3Lottie);
 
 app.mount('#app')

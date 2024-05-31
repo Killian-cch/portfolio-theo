@@ -1,5 +1,7 @@
 <script setup>
   import Hero from '@/components/Hero.vue'
+  import BrandingInfographie from '@/components/BrandingInfographie.vue'
+
 </script>
 
 <template>
@@ -106,6 +108,8 @@
       <div class="separator"></div>
     </ul>
   </div>
+
+  <BrandingInfographie />
 </template>
 
 <style lang="sass" scoped>
@@ -216,6 +220,8 @@
               align-items: center
               column-gap: 2rem
               width: 100%
+              @include breakpoint($s-screen)
+                overflow: hidden
               .hover-star
                 width: 60px
                 opacity: 0
@@ -223,8 +229,9 @@
                   display: none
               span
                 width: calc(100% - 33px - 2rem)
-                @include breakpoint($m-screen)
-                  width: auto
+                @include breakpoint($s-screen)
+                  overflow-wrap: break-word
+                  width: 100%
             .arrow-tr
               transition: all 0.3s ease
               width: 33px
